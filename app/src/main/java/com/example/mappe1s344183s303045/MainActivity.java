@@ -14,10 +14,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button forsteknapp = (Button) findViewById(R.id.startknapp);
-        Button andreknapp = (Button) findViewById(R.id.preferanseknapp);
-        Button tredjeknapp = (Button) findViewById(R.id.statistikkknapp);
         forsteknapp.setOnClickListener(this::onClick);
+        Button andreknapp = (Button) findViewById(R.id.preferanseknapp);
         andreknapp.setOnClickListener(this::onClick);
+        Button tredjeknapp = (Button) findViewById(R.id.statistikkknapp);
         tredjeknapp.setOnClickListener(this::onClick);
         //Lager clicklisteners slik at trykkene registreres
     }

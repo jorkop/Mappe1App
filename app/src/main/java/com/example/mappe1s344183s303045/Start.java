@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class Start extends AppCompatActivity implements View.OnClickListener{
 
@@ -13,7 +14,6 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.startspill);
-
 
         // Disse er for å kunne registrere når man trykker på knappene
         Button knapp1 = (Button) findViewById(R.id.knapp1);
@@ -40,34 +40,37 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
         knapp10.setOnClickListener(this);
     }
 
-    //Funksjon som legger inn tall i inputfeltet
+    //Funksjonen onClick legger inn tall i inputfeltet fra knappene og sletter hvis slettknappen trykkes
     @Override
     public void onClick(View v) {
-        EditText et = findViewById(R.id.svartekst); //Henter tall som allerede er skrevet inn
+        TextView et = findViewById(R.id.svartekst); //Henter tall som allerede er skrevet inn
         String resultat = et.getText().toString(); //Gjør om tallene som ble hentet til en String
+        int lengde = resultat.length();
 
-        if (v.getId() == R.id.knapp1) {
-            resultat += "1";
-        }else if (v.getId() == R.id.knapp2) {
-            resultat += "2";
-        }else if (v.getId() == R.id.knapp3) {
-            resultat += "3";
-        }else if (v.getId() == R.id.knapp4) {
-            resultat += "4";
-        }else if (v.getId() == R.id.knapp5) {
-            resultat += "5";
-        }else if (v.getId() == R.id.knapp6) {
-            resultat += "6";
-        }else if (v.getId() == R.id.knapp7) {
-            resultat += "7";
-        }else if (v.getId() == R.id.knapp8) {
-            resultat += "8";
-        }else if (v.getId() == R.id.knapp9) {
-            resultat += "9";
-        }else if (v.getId() == R.id.knapp0) {
-            resultat += "0";
-        }else if (v.getId() == R.id.slettknapp) { //Slettknappen skal slette ett og ett tall
-            int lengde = resultat.length();
+        if (lengde < 6) { // Ingenting vil bli gjort dersom det er mer enn 6 tall skrevet inn
+            if (v.getId() == R.id.knapp1) {
+                resultat += "1";
+            } else if (v.getId() == R.id.knapp2) {
+                resultat += "2";
+            } else if (v.getId() == R.id.knapp3) {
+                resultat += "3";
+            } else if (v.getId() == R.id.knapp4) {
+                resultat += "4";
+            } else if (v.getId() == R.id.knapp5) {
+                resultat += "5";
+            } else if (v.getId() == R.id.knapp6) {
+                resultat += "6";
+            } else if (v.getId() == R.id.knapp7) {
+                resultat += "7";
+            } else if (v.getId() == R.id.knapp8) {
+                resultat += "8";
+            } else if (v.getId() == R.id.knapp9) {
+                resultat += "9";
+            } else if (v.getId() == R.id.knapp0) {
+                resultat += "0";
+            }
+
+        }  if (v.getId() == R.id.slettknapp) { //Slettknappen skal slette ett og ett tall
 
             // Bruker lengden til resultat strengen til å slette ett og ett siffer bakfra
             try {
@@ -80,7 +83,7 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
 
         try { //Sjekker om teksten kan settes i EditText, og setter inn i feltet
             et.setText(resultat);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("Could not set text " + e);
         }
     }

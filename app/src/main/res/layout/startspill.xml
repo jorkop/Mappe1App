@@ -9,16 +9,17 @@
     android:background="@color/gronnbak">
 
 
-    <EditText
+    <TextView
         android:id="@+id/svartekst"
         android:layout_width="154dp"
         android:layout_height="69dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="128dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="124dp"
+        android:textColor="@color/black"
+        android:textSize="25sp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:inputType="none">
-    </EditText>
+        app:layout_constraintTop_toTopOf="parent">
+    </TextView>
 
     <Button
         android:id="@+id/svarknapp"
