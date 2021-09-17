@@ -9,4 +9,5 @@
     <string name="beskrivelse">Logo til app</string>
     <string name="svarknapp">Svar</string>
     <string name="slettknapp">Sletteknapp</string>
+    <string name="antallspm">Antall spørsmål per spill</string>
 </resources>

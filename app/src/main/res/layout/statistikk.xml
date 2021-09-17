@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="298dp"
         android:layout_height="39dp"
-        android:text="@string/preferanser"
+        android:text="@string/statistikk"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30sp"
