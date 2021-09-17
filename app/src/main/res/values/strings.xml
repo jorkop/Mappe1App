@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">iMath</string>
+    <string name="start">Start</string>
+    <string name="statistikk">Statistikk</string>
+    <string name="preferanser">Preferanser</string>
+    <string name="tysk">Tysk</string>
+    <string name="norsk">Norsk</string>
+    <string name="språktekst">Velg språk</string>
+    <string name="beskrivelse">Logo til app</string>
+    <string name="svarknapp">Svar</string>
+    <string name="slettknapp">Sletteknapp</string>
+</resources>

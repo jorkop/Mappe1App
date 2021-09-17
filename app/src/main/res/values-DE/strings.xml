@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">iMath</string>
+    <string name="start">Start</string>
+    <string name="statistikk">Statistichen</string>
+    <string name="preferanser">Preferanscher</string>
+    <string name="tysk">Deutsch</string>
+    <string name="norsk">Norvegen</string>
+    <string name="språktekst">Kleine spraachen</string>
+</resources>
