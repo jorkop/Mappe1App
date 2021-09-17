@@ -40,6 +40,7 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
         knapp10.setOnClickListener(this);
     }
 
+    //Funksjon som legger inn tall i inputfeltet
     @Override
     public void onClick(View v) {
         EditText et = findViewById(R.id.svartekst); //Henter tall som allerede er skrevet inn
@@ -47,11 +48,11 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
 
         if (v.getId() == R.id.knapp1) {
             resultat += "1";
-        } else if (v.getId() == R.id.knapp2) {
+        }else if (v.getId() == R.id.knapp2) {
             resultat += "2";
-        } else if (v.getId() == R.id.knapp3) {
+        }else if (v.getId() == R.id.knapp3) {
             resultat += "3";
-        } else if (v.getId() == R.id.knapp4) {
+        }else if (v.getId() == R.id.knapp4) {
             resultat += "4";
         }else if (v.getId() == R.id.knapp5) {
             resultat += "5";
@@ -65,7 +66,18 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
             resultat += "9";
         }else if (v.getId() == R.id.knapp0) {
             resultat += "0";
+        }else if (v.getId() == R.id.slettknapp) { //Slettknappen skal slette ett og ett tall
+            int lengde = resultat.length();
+
+            // Bruker lengden til resultat strengen til å slette ett og ett siffer bakfra
+            try {
+                StringBuilder sb = new StringBuilder(resultat);
+                resultat = sb.deleteCharAt(lengde - 1).toString();
+            } catch (Exception e) {
+                System.out.println("This does not work: " + e);
+            }
         }
+
 
         try { //Sjekker om teksten kan settes i EditText, og setter inn i feltet
             et.setText(resultat);
@@ -77,7 +89,7 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
 Koden under: Gjør om strengen til en int, må finne ut hvordan vi skal sammenligne svar og input,
 enten ved å sammenligne int eller string. Kan være unødvendig å parse til int.
  */
-        int res = 0;
+        int res;
         try {
             res = Integer.parseInt(resultat);
             System.out.println("Parsed to " + res);
