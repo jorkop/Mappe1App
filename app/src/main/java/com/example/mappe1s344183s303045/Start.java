@@ -78,25 +78,10 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
             }
         }
 
-
         try { //Sjekker om teksten kan settes i EditText, og setter inn i feltet
             et.setText(resultat);
         } catch(Exception e) {
             System.out.println("Could not set text " + e);
         }
-
-/*
-Koden under: Gjør om strengen til en int, må finne ut hvordan vi skal sammenligne svar og input,
-enten ved å sammenligne int eller string. Kan være unødvendig å parse til int.
- */
-        int res;
-        try {
-            res = Integer.parseInt(resultat);
-            System.out.println("Parsed to " + res);
-        } catch(NumberFormatException nfe) {
-            System.out.println("Could not parse " + nfe);
-        }
-
-
     }
 }
