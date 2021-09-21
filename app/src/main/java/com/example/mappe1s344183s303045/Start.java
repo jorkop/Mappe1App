@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Start extends AppCompatActivity implements View.OnClickListener{
+    ArrayList<String> arrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +53,12 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
 
 
         TextView tv = findViewById(R.id.spørsmål);
-        int x = (int) (Math.random() * 14 - 0);
+        int x = (int) (Math.random() * 15 - 0);
         tv.setText(getResources().getStringArray(R.array.regnestykker)[x]);
+
+        for (int o = 0; o < 15; o++) { //Legger array fra xml inn i arraylist
+            arrayList.add(getResources().getStringArray(R.array.regnestykker)[o]);
+        }
     }
 
 /* For eventuell styling av Toast
@@ -116,11 +121,12 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
     }
 
 
-    public void svarKnapp() {// Sammenligner tekst på skjerm med spørsmål-array og henter svar fra svar-array
-        TextView spørs = findViewById(R.id.spørsmål);
-        String navn = spørs.getText().toString();
+    public void svarKnapp() { // Sammenligner tekst på skjerm med spørsmål-array og henter svar fra svar-array
+        TextView sporsmal = findViewById(R.id.spørsmål);
+        String navn = sporsmal.getText().toString();
         TextView et = findViewById(R.id.svartekst);
         String resultat = et.getText().toString();
+
         for (int i = 0; i < 15; i++) {
             if (getResources().getStringArray(R.array.regnestykker)[i].equals(navn)) {
                 String svar = (getResources().getStringArray(R.array.svar)[i]);
@@ -142,13 +148,14 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
                     toast.setGravity(Gravity.CENTER_HORIZONTAL);
                      */
                 }
-                ArrayList<String> arrayList = new ArrayList<>();
-                for (int o = 0; o < 15; o++) {
-                    arrayList.add(getResources().getStringArray(R.array.regnestykker)[o]);
-                }
-                String slette = getResources().getStringArray(R.array.regnestykker)[i];
+
+                String slette = getResources().getStringArray(R.array.regnestykker)[i]; //Sletter første spørsmålet som blir stilt
                 arrayList.remove(slette);
                 System.out.println(arrayList);
+
+                int x = (int) (Math.random() * arrayList.size() - 0); //Lager ilfeldig tall mellom 0 og lengde på array av gjenværende regnestykker
+                sporsmal.setText(arrayList.get(x)); //Setter teksten til tilfeldig regnestykke
+                et.setText(""); //Setter svarteksten blankt
             }
         }
     }
