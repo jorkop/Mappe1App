@@ -2,13 +2,21 @@ package com.example.mappe1s344183s303045;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.text.AlteredCharSequence;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 public class Start extends AppCompatActivity implements View.OnClickListener{
+
+    private AlteredCharSequence Snackbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +53,10 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
         TextView tv = findViewById(R.id.spørsmål);
         int x = (int) (Math.random() * 14 - 0);
         tv.setText(getResources().getStringArray(R.array.regnestykker)[x]);
+    }
+
+    public void showToast(View v){ // Skreddersydd Toast
+        StyleableToast.makeText(this,"Hello world!",R.style.exampleToast).show();
     }
 
     //Funksjonen onClick legger inn tall i inputfeltet fra knappene og sletter hvis slettknappen trykkes
@@ -94,13 +106,33 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
             System.out.println("Could not set text " + e);
         }
 
-        if (v.getId() == R.id.svarknapp) {
+        if (v.getId() == R.id.svarknapp) { // Sammenligner tekst på skjerm med spørsmål-array og henter svar fra svar-array
             TextView spørs = findViewById(R.id.spørsmål);
             String navn = spørs.getText().toString();
             for (int i = 0; i < 15; i++) {
                 if (getResources().getStringArray(R.array.regnestykker)[i].equals(navn)) {
                     String svar = (getResources().getStringArray(R.array.svar)[i]);
                     System.out.println("Svaret er: " + svar);
+
+                    if (svar.equals(resultat)) {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Riktig!", Toast.LENGTH_SHORT);
+                        toast.show();
+                        toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+
+
+                    } else {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Ikke riktig denne gangen!", Toast.LENGTH_LONG);
+                        toast.show();
+                        toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+
+
+                        /* For eventuell styling av Toast
+                        StyleableToast toast = StyleableToast.makeText(getApplicationContext(), "Detta blei feil...", R.style.exampleToast);
+                        toast.show();
+                        toast.setGravity(Gravity.CENTER_HORIZONTAL);
+                         */
+                    }
+
                 }
             }
         }

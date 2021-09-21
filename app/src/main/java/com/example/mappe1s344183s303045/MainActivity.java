@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.muddzdev.styleabletoastlibrary.StyleableToast;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -21,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         tredjeknapp.setOnClickListener(this::onClick);
         //Lager clicklisteners slik at trykkene registreres
     }
-
 
     public void onClick(View v) {
         if (v.getId() == R.id.startknapp) {
