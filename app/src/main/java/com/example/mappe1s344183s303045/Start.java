@@ -94,13 +94,14 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
             System.out.println("Could not set text " + e);
         }
 
-
-
-
         if (v.getId() == R.id.svarknapp) {
-            String navn = getText(R.id.spørsmål).toString();
+            TextView spørs = findViewById(R.id.spørsmål);
+            String navn = spørs.getText().toString();
             for (int i = 0; i < 15; i++) {
-
+                if (getResources().getStringArray(R.array.regnestykker)[i].equals(navn)) {
+                    String svar = (getResources().getStringArray(R.array.svar)[i]);
+                    System.out.println("Svaret er: " + svar);
+                }
             }
         }
     }
