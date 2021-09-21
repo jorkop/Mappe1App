@@ -38,6 +38,13 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
         knapp0.setOnClickListener(this);
         ImageButton knapp10 = (ImageButton) findViewById(R.id.slettknapp);
         knapp10.setOnClickListener(this);
+        Button knapp11 = (Button) findViewById(R.id.svarknapp);
+        knapp11.setOnClickListener(this);
+
+
+        TextView tv = findViewById(R.id.spørsmål);
+        int x = (int) (Math.random() * 14 - 0);
+        tv.setText(getResources().getStringArray(R.array.regnestykker)[x]);
     }
 
     //Funksjonen onClick legger inn tall i inputfeltet fra knappene og sletter hvis slettknappen trykkes
@@ -85,6 +92,16 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
             et.setText(resultat);
         } catch (Exception e) {
             System.out.println("Could not set text " + e);
+        }
+
+
+
+
+        if (v.getId() == R.id.svarknapp) {
+            String navn = getText(R.id.spørsmål).toString();
+            for (int i = 0; i < 15; i++) {
+
+            }
         }
     }
 }
