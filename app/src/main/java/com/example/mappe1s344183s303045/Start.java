@@ -19,6 +19,7 @@ import java.util.Arrays;
 
 public class Start extends AppCompatActivity implements View.OnClickListener{
     ArrayList<String> arrayList = new ArrayList<>();
+    int o = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,15 +150,37 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
                      */
                 }
 
-                String slette = getResources().getStringArray(R.array.regnestykker)[i]; //Sletter første spørsmålet som blir stilt
-                arrayList.remove(slette);
-                System.out.println(arrayList);
+                String s = getSharedPreferences("PREFERENCE",MODE_PRIVATE).getString("Hovedtekst","");
+                int x = 0;
+                switch (s) {
+                    case "5":
+                        x = 5;
+                        break;
+                    case "10":
+                        x = 10;
+                        break;
+                    case "15":
+                        x = 15;
+                        break;
+                }
 
-                int x = (int) (Math.random() * arrayList.size() - 0); //Lager ilfeldig tall mellom 0 og lengde på array av gjenværende regnestykker
-                sporsmal.setText(arrayList.get(x)); //Setter teksten til tilfeldig regnestykke
-                et.setText(""); //Setter svarteksten blankt
+                if (o < x) {
+                    String slette = getResources().getStringArray(R.array.regnestykker)[i]; //Sletter første spørsmålet som blir stilt
+                    arrayList.remove(slette);
+                    System.out.println(arrayList);
+                    int y = (int) (Math.random() * arrayList.size() - 0); //Lager ilfeldig tall mellom 0 og lengde på array av gjenværende regnestykker
+                    sporsmal.setText(arrayList.get(y)); //Setter teksten til tilfeldig regnestykke
+                    et.setText(""); //Setter svarteksten blankt
+                    o++;
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Spillet er ferdig.", Toast.LENGTH_SHORT).show();
+                    sporsmal.setText("");
+                    et.setText("");
+                }
             }
         }
     }
 }
+
 
