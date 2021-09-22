@@ -6,8 +6,10 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -51,18 +53,27 @@ public class Preferanser extends AppCompatActivity implements View.OnClickListen
                     .edit()
                     .putString("Hovedtekst", "5")
                     .apply();
+            Toast toast = Toast.makeText(getApplicationContext(), "5 spill satt", Toast.LENGTH_SHORT);
+            toast.show();
+            toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
 
         } else if (v.getId() == R.id.spm10) {
             getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                     .edit()
                     .putString("Hovedtekst", "10")
                     .apply();
+            Toast toast = Toast.makeText(getApplicationContext(), "10 spill satt", Toast.LENGTH_SHORT);
+            toast.show();
+            toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
 
         } else if (v.getId() == R.id.spm15) {
             getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                     .edit()
                     .putString("Hovedtekst", "15")
                     .apply();
+            Toast toast = Toast.makeText(getApplicationContext(), "15 spill satt", Toast.LENGTH_SHORT);
+            toast.show();
+            toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
         }
     }
 }

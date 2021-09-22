@@ -10,4 +10,6 @@
     <string name="svarknapp">Svar</string>
     <string name="slettknapp">Sletteknapp</string>
     <string name="antallspm">Antall spørsmål per spill</string>
+    <string name="riktige">Riktige</string>
+    <string name="feil">Feil</string>
 </resources>

@@ -20,6 +20,8 @@ import java.util.Arrays;
 public class Start extends AppCompatActivity implements View.OnClickListener{
     ArrayList<String> arrayList = new ArrayList<>();
     int o = 1;
+    int f = 0;
+    int r = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +130,10 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
         TextView et = findViewById(R.id.svartekst);
         String resultat = et.getText().toString();
 
+        TextView feil = findViewById(R.id.feiltall);
+        TextView riktig = findViewById(R.id.riktigtall);
+
+
         for (int i = 0; i < 15; i++) {
             if (getResources().getStringArray(R.array.regnestykker)[i].equals(navn)) {
                 String svar = (getResources().getStringArray(R.array.svar)[i]);
@@ -137,11 +143,15 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
                     Toast toast = Toast.makeText(getApplicationContext(), "Riktig!", Toast.LENGTH_SHORT);
                     toast.show();
                     toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+                    r++;
+                        riktig.setText(Integer.toString(r));
 
                 } else {
                     Toast toast = Toast.makeText(getApplicationContext(), "Ikke riktig denne gangen!", Toast.LENGTH_LONG);
                     toast.show();
                     toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
+                    f++;
+                    feil.setText(Integer.toString(f));
 
                     /* For eventuell styling av Toast
                     StyleableToast toast = StyleableToast.makeText(getApplicationContext(), "Detta blei feil...", R.style.exampleToast);
@@ -177,6 +187,8 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
                     Toast.makeText(getApplicationContext(), "Spillet er ferdig.", Toast.LENGTH_SHORT).show();
                     sporsmal.setText("");
                     et.setText("");
+
+
                 }
             }
         }

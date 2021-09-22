@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gronnbak">#C1E1C1</color>
     <color name="dusgrønn">#f4feea</color>
+    <color name="rød">#8b2320</color>
+    <color name="grønnsterk">#00A300</color>
 </resources>
