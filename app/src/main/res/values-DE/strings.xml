@@ -1,9 +1,18 @@
 <resources>
     <string name="app_name">iMath</string>
-    <string name="start">Start</string>
-    <string name="statistikk">Statistichen</string>
-    <string name="preferanser">Preferanscher</string>
+    <string name="start">Anfang</string>
+    <string name="statistikk">Statistiken</string>
+    <string name="preferanser">Vorlieben</string>
     <string name="tysk">Deutsch</string>
     <string name="norsk">Norvegen</string>
-    <string name="språktekst">Kleine spraachen</string>
+    <string name="språktekst">Sprache auswählen</string>
+    <string name="beskrivelse">Logo für App</string>
+    <string name="svarknapp">Antworten</string>
+    <string name="slettknapp">Schaltflaäche löschen</string>
+    <string name="antallspm">Anzahl der Fragen pro Spiel</string>
+    <string name="riktige">Korrekt</string>
+    <string name="feil">Error</string>
+    <string name="stat_riktig_tekst">Nummer richtig</string>
+    <string name="stat_antall_feil">Anzahl der Fehler</string>
+    <string name="slettstat">Alle Statistiken löschen</string>
 </resources>

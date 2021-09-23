@@ -147,7 +147,7 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
                         riktig.setText(Integer.toString(r));
 
                 } else {
-                    Toast toast = Toast.makeText(getApplicationContext(), "Ikke riktig denne gangen!", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Ikke riktig denne gangen!", Toast.LENGTH_SHORT);
                     toast.show();
                     toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
                     f++;
@@ -172,6 +172,8 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
                     case "15":
                         x = 15;
                         break;
+                    default:
+                        x = 5;
                 }
 
                 if (o < x) {
