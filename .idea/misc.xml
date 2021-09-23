@@ -5,9 +5,11 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
         <entry key="app/src/main/res/layout/preferanser.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/setpref.xml" value="0.14427083333333332" />
         <entry key="app/src/main/res/layout/startspill.xml" value="0.375" />
         <entry key="app/src/main/res/layout/statistikk.xml" value="0.45" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.12552083333333333" />
+        <entry key="app/src/main/res/xml/preferences.xml" value="0.14427083333333332" />
       </map>
     </option>
   </component>

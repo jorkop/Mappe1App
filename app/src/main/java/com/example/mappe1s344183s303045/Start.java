@@ -2,6 +2,7 @@ package com.example.mappe1s344183s303045;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.text.AlteredCharSequence;
 import android.view.Gravity;
@@ -17,11 +18,27 @@ import com.muddzdev.styleabletoastlibrary.StyleableToast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Start extends AppCompatActivity implements View.OnClickListener{
+public class Start extends AppCompatActivity implements View.OnClickListener, MyDialog.DialogClickListener{
     ArrayList<String> arrayList = new ArrayList<>();
     int o = 1; //Int for å begrense antall spørsmål som blir vist, som valgt i preferanser
     int f = 0; //Int for telling av antall feil svar
     int r = 0; //Int for telling av antall riktige svar
+
+    //Yes og No er for popup ved avbrutt spill
+    @Override
+    public void onYesClick() {
+        finish();
+    }
+    @Override
+    public void onNoClick() {
+        return;
+    }
+
+    @Override
+    public void visDialog(View v) {
+        DialogFragment dialog = new MyDialog();
+        dialog.show(getSupportFragmentManager(),"Avslutt");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

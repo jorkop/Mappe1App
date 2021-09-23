@@ -15,4 +15,8 @@
     <string name="stat_riktig_tekst">Antall riktig</string>
     <string name="stat_antall_feil">Antall feil</string>
     <string name="slettstat">Slett all statistikk</string>
+
+    <!-- For popup ved avbrutt spill -->
+    <string name="ok">Avslutt</string>
+    <string name="ikkeok">Avbryt</string>
 </resources>
