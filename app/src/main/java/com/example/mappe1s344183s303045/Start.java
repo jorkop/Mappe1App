@@ -72,12 +72,13 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
         knapp11.setOnClickListener(this);
 
 
+
         TextView tv = findViewById(R.id.spørsmål);
         int x = (int) (Math.random() * 15 - 0);
         tv.setText(getResources().getStringArray(R.array.regnestykker)[x]);
 
-        for (int o = 0; o < 15; o++) { //Legger array fra xml inn i arraylist
-            arrayList.add(getResources().getStringArray(R.array.regnestykker)[o]);
+        for (int z = 0; z < 15; z++) { //Legger array fra xml inn i arraylist
+            arrayList.add(getResources().getStringArray(R.array.regnestykker)[z]);
         }
     }
 
@@ -178,7 +179,7 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
                 }
 
                 String s = getSharedPreferences("PREFERENCE",MODE_PRIVATE).getString("Hovedtekst","");
-                int x = 0;
+                int x;
                 switch (s) {
                     case "5":
                         x = 5;
@@ -254,4 +255,54 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
         System.out.println("Lagret riktige");
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) { super.onSaveInstanceState(outState);
+        TextView feiltekst = findViewById(R.id.feiltall); //Lagrer antall feil i et spill
+        String navnfeil = feiltekst.getText().toString();
+        outState.putString("Feiltekst",navnfeil);
+
+        TextView riktigtekst = findViewById(R.id.riktigtall); //Lagrer antall riktige i et spill
+        String navnriktig = riktigtekst.getText().toString();
+        outState.putString("Riktigtekst",navnriktig);
+
+        TextView svar = findViewById(R.id.svartekst);
+        String svaret = svar.getText().toString();
+        outState.putString("Svar",svaret);
+
+        TextView spørsmål = findViewById(R.id.spørsmål);
+        String spørs = spørsmål.getText().toString();
+        outState.putString("Spørs",spørs);
+
+                String begrensantall = String.valueOf(o); //Lagrer hvor mange spørsmål det er igjen å stille
+        outState.putString("Antallspm", begrensantall);
+
+        outState.putStringArrayList("Array",arrayList); //Lagrer arrayList med resterende spørsmål
+
+    }
+
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        //Henter antall feil i spill ved rotering av telefon
+        TextView tvf = findViewById(R.id.feiltall);
+        tvf.setText(savedInstanceState.getString("Feiltekst"));
+        f = Integer.parseInt(savedInstanceState.getString("Feiltekst"));// For å beholde antall feil ved opprettelse av skjermbildet
+
+        //Henter antall riktig i spill ved rotering av telefon
+        TextView tvr = findViewById(R.id.riktigtall);
+        tvr.setText(savedInstanceState.getString("Riktigtekst"));
+
+        TextView svar = findViewById(R.id.svartekst);
+        svar.setText(savedInstanceState.getString("Svar"));
+
+        TextView spørsmål = findViewById(R.id.spørsmål);
+        spørsmål.setText(savedInstanceState.getString("Spørs"));
+
+        r = Integer.parseInt(savedInstanceState.getString("Riktigtekst")); // For å beholde antall riktige ved opprettelse av skjermbildet
+
+        o = Integer.parseInt(savedInstanceState.getString("Antallspm")); //Sier hvor mange spørsmål som er igjen å stille
+
+        arrayList = savedInstanceState.getStringArrayList("Array"); //For å beholde arrayList og ikke få spørsmål om igjen
+
+    }
 }

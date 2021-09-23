@@ -91,6 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:text="@string/slettstat"
+        android:background="@color/dusgrønn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
