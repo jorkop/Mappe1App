@@ -19,9 +19,9 @@ import java.util.Arrays;
 
 public class Start extends AppCompatActivity implements View.OnClickListener{
     ArrayList<String> arrayList = new ArrayList<>();
-    int o = 1;
-    int f = 0;
-    int r = 0;
+    int o = 1; //Int for å begrense antall spørsmål som blir vist, som valgt i preferanser
+    int f = 0; //Int for telling av antall feil svar
+    int r = 0; //Int for telling av antall riktige svar
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,7 +178,7 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
                     String slette = getResources().getStringArray(R.array.regnestykker)[i]; //Sletter første spørsmålet som blir stilt
                     arrayList.remove(slette);
                     System.out.println(arrayList);
-                    int y = (int) (Math.random() * arrayList.size() - 0); //Lager ilfeldig tall mellom 0 og lengde på array av gjenværende regnestykker
+                    int y = (int) (Math.random() * arrayList.size() - 0); //Lager tilfeldig tall mellom 0 og lengde på array av gjenværende regnestykker
                     sporsmal.setText(arrayList.get(y)); //Setter teksten til tilfeldig regnestykke
                     et.setText(""); //Setter svarteksten blankt
                     o++;
@@ -187,12 +187,52 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
                     Toast.makeText(getApplicationContext(), "Spillet er ferdig.", Toast.LENGTH_SHORT).show();
                     sporsmal.setText("");
                     et.setText("");
-
-
+                    lagreFeil();
+                    lagreRiktig();
                 }
             }
         }
     }
+
+    /*
+    Denne funksjonen henter totalt antall feil fra før dette spillet,
+    legger til feil som oppstod under dette spillet og lagrer totalen
+     */
+    public void lagreFeil() {
+        String lagretfeil = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("Fel", "");
+        if (lagretfeil.equals("")){
+            System.out.println("Ingen feil er lagret fra før");
+        }else {
+            System.out.println("Stringen er: " + lagretfeil);
+            int antallfeil = Integer.parseInt(lagretfeil);
+            f = antallfeil + f;
+        }
+
+        getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                .edit()
+                .putString("Fel", Integer.toString(f))
+                .apply();
+        System.out.println("Lagret feil");
+
+    }
+
+    /*
+    Denne funksjonen henter totalt antall riktige fra før dette spillet,
+    legger til riktige som oppstod under dette spillet og lagrer totalen
+     */
+    public void lagreRiktig() {
+        String lagretriktig = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("Riktig", "");
+        if (lagretriktig.equals("")){
+            System.out.println("Ingen riktige svar er lagret fra før");
+        }else {
+            System.out.println("Stringen er: " + lagretriktig);
+            int antallriktig = Integer.parseInt(lagretriktig);
+            r = antallriktig + r;
+        }
+        getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                .edit()
+                .putString("Riktig", Integer.toString(r))
+                .apply();
+        System.out.println("Lagret riktige");
+    }
 }
-
-
