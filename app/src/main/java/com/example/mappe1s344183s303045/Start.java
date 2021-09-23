@@ -175,7 +175,6 @@ public class Start extends AppCompatActivity implements View.OnClickListener{
                     default:
                         x = 5;
                 }
-
                 if (o < x) {
                     String slette = getResources().getStringArray(R.array.regnestykker)[i]; //Sletter første spørsmålet som blir stilt
                     arrayList.remove(slette);
