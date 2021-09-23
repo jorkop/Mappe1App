@@ -35,7 +35,7 @@ public class MyDialog extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        return new AlertDialog.Builder(getActivity()).setTitle(R.string.ok).setPositiveButton(R.string.ok,
+        return new AlertDialog.Builder(getActivity()).setTitle(R.string.avslutt).setPositiveButton(R.string.ok,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton){
                         callback.onYesClick();

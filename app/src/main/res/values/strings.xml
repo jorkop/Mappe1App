@@ -17,7 +17,10 @@
     <string name="slettstat">Slett all statistikk</string>
     <string name="ferdig">Ferdig!</string>
 
+
     <!-- For popup ved avbrutt spill -->
-    <string name="ok">Avslutt</string>
-    <string name="ikkeok">Avbryt</string>
+    <string name="avslutt">Vil du avslutte spillet?</string>
+    <string name="ok">Ja</string>
+    <string name="ikkeok">Nei</string>
+
 </resources>

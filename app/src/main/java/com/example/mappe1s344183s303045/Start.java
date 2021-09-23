@@ -253,4 +253,5 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
                 .apply();
         System.out.println("Lagret riktige");
     }
+
 }

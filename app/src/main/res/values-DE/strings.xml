@@ -16,4 +16,9 @@
     <string name="stat_antall_feil">Anzahl der Fehler</string>
     <string name="slettstat">Alle Statistiken löschen</string>
     <string name="ferdig">Fertig!</string>
+
+    <!-- For popup ved avbrutt spill -->
+    <string name="avslutt">Willst du das speil beenden?</string>
+    <string name="ok">Ja</string>
+    <string name="ikkeok">Nein</string>
 </resources>
