@@ -1,22 +1,35 @@
 <resources>
+    <!-- Hovedmeny -->
     <string name="app_name">iMath</string>
     <string name="start">Start</string>
     <string name="statistikk">Statistikk</string>
     <string name="preferanser">Preferanser</string>
+    <string name="beskrivelse">Logo til app</string>
+
+    <!-- Inne i preferanser -->
     <string name="tysk">Tysk</string>
     <string name="norsk">Norsk</string>
     <string name="språktekst">Velg språk</string>
-    <string name="beskrivelse">Logo til app</string>
+    <string name="antallspm">Antall spørsmål per spill</string>
+    <string name="satt5">5 spørsmål satt!</string>
+    <string name="satt10">10 spørsmål satt</string>
+    <string name="satt15">15 spørsmål satt</string>
+
+    <!-- Inne i spill -->
     <string name="svarknapp">Svar</string>
     <string name="slettknapp">Sletteknapp</string>
-    <string name="antallspm">Antall spørsmål per spill</string>
     <string name="riktige">Riktige</string>
     <string name="feil">Feil</string>
-    <string name="stat_riktig_tekst">Antall riktig</string>
-    <string name="stat_antall_feil">Antall feil</string>
-    <string name="slettstat">Slett all statistikk</string>
     <string name="ferdig">Ferdig!</string>
 
+    <!-- Inne i statistikk -->
+    <string name="slettstat">Slett all statistikk</string>
+    <string name="stat_riktig_tekst">Antall riktig</string>
+    <string name="stat_antall_feil">Antall feil</string>
+
+    <!-- Popup ved svar -->
+    <string name="riktigsvar">Riktig</string>
+    <string name="feilsvar">Ikke riktig denne gangen!</string>
 
     <!-- For popup ved avbrutt spill -->
     <string name="avslutt">Vil du avslutte spillet?</string>

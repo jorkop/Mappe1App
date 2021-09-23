@@ -158,14 +158,14 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
                 System.out.println("Svaret er: " + svar);
 
                 if (svar.equals(resultat)) {
-                    Toast toast = Toast.makeText(getApplicationContext(), "Riktig!", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.riktigsvar, Toast.LENGTH_SHORT);
                     toast.show();
                     toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
                     r++;
                         riktig.setText(Integer.toString(r));
 
                 } else {
-                    Toast toast = Toast.makeText(getApplicationContext(), "Ikke riktig denne gangen!", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.feilsvar, Toast.LENGTH_SHORT);
                     toast.show();
                     toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
                     f++;
