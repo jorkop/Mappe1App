@@ -49,4 +49,9 @@ public class Statistikk extends AppCompatActivity implements View.OnClickListene
                 .apply();
         recreate(); //Refresher skjermbildet slik at statistikken blir fjernet med en gang
     }
+
+
+    public void tilMeny(View v) {
+        finish();
+    }
 }

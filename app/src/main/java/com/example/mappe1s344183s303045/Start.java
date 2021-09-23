@@ -202,8 +202,8 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
                     o++;
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "Spillet er ferdig.", Toast.LENGTH_SHORT).show();
-                    sporsmal.setText("");
+                    //Toast.makeText(getApplicationContext(), "Spillet er ferdig.", Toast.LENGTH_SHORT).show();
+                    sporsmal.setText(R.string.ferdig);
                     et.setText("");
                     lagreFeil();
                     lagreRiktig();

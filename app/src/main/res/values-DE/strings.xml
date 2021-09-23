@@ -15,5 +15,5 @@
     <string name="stat_riktig_tekst">Nummer richtig</string>
     <string name="stat_antall_feil">Anzahl der Fehler</string>
     <string name="slettstat">Alle Statistiken löschen</string>
-
+    <string name="ferdig">Fertig!</string>
 </resources>

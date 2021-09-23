@@ -76,4 +76,9 @@ public class Preferanser extends AppCompatActivity implements View.OnClickListen
             toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
         }
     }
+
+
+    public void tilMenyen(View v) {
+        finish();
+    }
 }
