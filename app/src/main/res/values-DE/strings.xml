@@ -16,7 +16,7 @@
     <string name="satt15">15 Fragen-Set!</string>
 
     <!-- Inne i spill -->
-    <string name="svarknapp">Antworten</string>
+    <string name="svarknapp">Antwort</string>
     <string name="slettknapp">Schaltflaäche löschen</string>
     <string name="riktige">Korrekt</string>
     <string name="feil">Error</string>

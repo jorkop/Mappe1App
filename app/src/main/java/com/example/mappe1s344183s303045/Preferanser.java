@@ -14,18 +14,24 @@ import android.widget.Toast;
 import java.util.Locale;
 
 public class Preferanser extends AppCompatActivity implements View.OnClickListener {
-
+    String landkode = "no";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preferanser);
 
+        //Bruker clicklistener for å kunne sette default til 5 ved bruk av switch
         Button knapp1 = (Button) findViewById(R.id.spm5);
         knapp1.setOnClickListener(this);
         Button knapp2 = (Button) findViewById(R.id.spm10);
         knapp2.setOnClickListener(this);
         Button knapp3 = (Button) findViewById(R.id.spm15);
         knapp3.setOnClickListener(this);
+
+        if (!landkode.equals("no")) {
+            settland(landkode);
+            System.out.println("onCreate land: " + landkode);
+        }
     }
 
     public void settland(String landskode) {
@@ -34,17 +40,30 @@ public class Preferanser extends AppCompatActivity implements View.OnClickListen
         Configuration config = res.getConfiguration();
         config.setLocale(new Locale(landskode));
         res.updateConfiguration(config, displaymet);
+
+        //Lagrer til sharedPreferences
+        getSharedPreferences("PREFERENCE",MODE_PRIVATE)
+                .edit()
+                .putString("Landkode",landskode)
+                .apply();
     }
 
     public void tysk(View v) {
-        settland("de");
+        landkode  = "de";
+        settland(landkode);
         recreate();
+        System.out.println("tysk: " + landkode);
     }
 
     public void norsk(View v) {
-        settland("no");
+        landkode  = "no";
+        settland(landkode);
         recreate();
+        System.out.println("nb: " + landkode);
     }
+
+
+
 
     @Override
     public void onClick(View v) {
@@ -76,7 +95,6 @@ public class Preferanser extends AppCompatActivity implements View.OnClickListen
             toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
         }
     }
-
 
     public void tilMenyen(View v) {
         finish();

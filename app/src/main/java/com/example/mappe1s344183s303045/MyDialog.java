@@ -19,8 +19,6 @@ public class MyDialog extends DialogFragment {
         void visDialog(View v);
     }
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);

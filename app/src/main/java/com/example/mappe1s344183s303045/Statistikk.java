@@ -1,11 +1,16 @@
 package com.example.mappe1s344183s303045;
 
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Locale;
 
 public class Statistikk extends AppCompatActivity implements View.OnClickListener{
 
@@ -50,6 +55,19 @@ public class Statistikk extends AppCompatActivity implements View.OnClickListene
         recreate(); //Refresher skjermbildet slik at statistikken blir fjernet med en gang
     }
 
+    public void settland(String landskode) {
+        Resources res = getResources();
+        DisplayMetrics displaymet = res.getDisplayMetrics();
+        Configuration config = res.getConfiguration();
+        config.setLocale(new Locale(landskode));
+        res.updateConfiguration(config, displaymet);
+    }
+
+    protected void onPause() {
+        super.onPause();
+        String landkode = getSharedPreferences("PREFERENCE",MODE_PRIVATE).getString("Landkode","");
+        settland(landkode);
+    }
 
     public void tilMeny(View v) {
         finish();

@@ -1,10 +1,13 @@
 package com.example.mappe1s344183s303045;
 
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.text.AlteredCharSequence;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -13,10 +16,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Locale;
 
 public class Start extends AppCompatActivity implements View.OnClickListener, MyDialog.DialogClickListener{
     ArrayList<String> arrayList = new ArrayList<>();
@@ -72,7 +74,6 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
         knapp11.setOnClickListener(this);
 
 
-
         TextView tv = findViewById(R.id.spørsmål);
         int x = (int) (Math.random() * 15 - 0);
         tv.setText(getResources().getStringArray(R.array.regnestykker)[x]);
@@ -81,12 +82,6 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
             arrayList.add(getResources().getStringArray(R.array.regnestykker)[z]);
         }
     }
-
-/* For eventuell styling av Toast
-    public void showToast(View v){ // Skreddersydd Toast
-        StyleableToast.makeText(this,"Hello world!",R.style.exampleToast).show();
-    }
- */
 
     //Funksjonen onClick legger inn tall i inputfeltet fra knappene og sletter hvis slettknappen trykkes
     @Override
@@ -171,11 +166,6 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
                     f++;
                     feil.setText(Integer.toString(f));
 
-                    /* For eventuell styling av Toast
-                    StyleableToast toast = StyleableToast.makeText(getApplicationContext(), "Detta blei feil...", R.style.exampleToast);
-                    toast.show();
-                    toast.setGravity(Gravity.CENTER_HORIZONTAL);
-                     */
                 }
 
                 String s = getSharedPreferences("PREFERENCE",MODE_PRIVATE).getString("Hovedtekst","");
@@ -208,6 +198,8 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
                     et.setText("");
                     lagreFeil();
                     lagreRiktig();
+                    String lang = Locale.getDefault().getLanguage();
+                    System.out.println("Språket er: " + lang);
                 }
             }
         }
@@ -256,7 +248,9 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) { super.onSaveInstanceState(outState);
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
         TextView feiltekst = findViewById(R.id.feiltall); //Lagrer antall feil i et spill
         String navnfeil = feiltekst.getText().toString();
         outState.putString("Feiltekst",navnfeil);
@@ -273,8 +267,8 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
         String spørs = spørsmål.getText().toString();
         outState.putString("Spørs",spørs);
 
-                String begrensantall = String.valueOf(o); //Lagrer hvor mange spørsmål det er igjen å stille
-        outState.putString("Antallspm", begrensantall);
+        //Lagrer hvor mange spørsmål det er igjen å stille
+        outState.putInt("Antallspm", o);
 
         outState.putStringArrayList("Array",arrayList); //Lagrer arrayList med resterende spørsmål
 
@@ -292,6 +286,7 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
         TextView tvr = findViewById(R.id.riktigtall);
         tvr.setText(savedInstanceState.getString("Riktigtekst"));
 
+        //Henter svaret som er skrevet inn i svarboksen i spill ved rotering av telefon
         TextView svar = findViewById(R.id.svartekst);
         svar.setText(savedInstanceState.getString("Svar"));
 
@@ -300,9 +295,25 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
 
         r = Integer.parseInt(savedInstanceState.getString("Riktigtekst")); // For å beholde antall riktige ved opprettelse av skjermbildet
 
-        o = Integer.parseInt(savedInstanceState.getString("Antallspm")); //Sier hvor mange spørsmål som er igjen å stille
+        o = savedInstanceState.getInt("Antallspm"); //Sier hvor mange spørsmål som er igjen å stille
 
         arrayList = savedInstanceState.getStringArrayList("Array"); //For å beholde arrayList og ikke få spørsmål om igjen
 
     }
+
+    public void settland(String landskode) {
+        Resources res = getResources();
+        DisplayMetrics displaymet = res.getDisplayMetrics();
+        Configuration config = res.getConfiguration();
+        config.setLocale(new Locale(landskode));
+        res.updateConfiguration(config, displaymet);
+    }
+
+    protected void onPause() {
+        super.onPause();
+        String landkode = getSharedPreferences("PREFERENCE",MODE_PRIVATE).getString("Landkode","");
+        settland(landkode);
+    }
+
+
 }
