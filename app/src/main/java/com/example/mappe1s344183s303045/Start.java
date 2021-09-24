@@ -6,12 +6,10 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
-import android.text.AlteredCharSequence;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,7 +31,7 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
     }
     @Override
     public void onNoClick() {
-        return;
+
     }
 
     @Override
@@ -171,9 +169,6 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
                 String s = getSharedPreferences("PREFERENCE",MODE_PRIVATE).getString("Hovedtekst","");
                 int x;
                 switch (s) {
-                    case "5":
-                        x = 5;
-                        break;
                     case "10":
                         x = 10;
                         break;
@@ -198,8 +193,6 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
                     et.setText("");
                     lagreFeil();
                     lagreRiktig();
-                    String lang = Locale.getDefault().getLanguage();
-                    System.out.println("Språket er: " + lang);
                 }
             }
         }
@@ -263,9 +256,9 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
         String svaret = svar.getText().toString();
         outState.putString("Svar",svaret);
 
-        TextView spørsmål = findViewById(R.id.spørsmål);
-        String spørs = spørsmål.getText().toString();
-        outState.putString("Spørs",spørs);
+        TextView sporsmal = findViewById(R.id.spørsmål);
+        String spors = sporsmal.getText().toString();
+        outState.putString("Spørs",spors);
 
         //Lagrer hvor mange spørsmål det er igjen å stille
         outState.putInt("Antallspm", o);
@@ -290,8 +283,8 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
         TextView svar = findViewById(R.id.svartekst);
         svar.setText(savedInstanceState.getString("Svar"));
 
-        TextView spørsmål = findViewById(R.id.spørsmål);
-        spørsmål.setText(savedInstanceState.getString("Spørs"));
+        TextView sporsmal = findViewById(R.id.spørsmål);
+        sporsmal.setText(savedInstanceState.getString("Spørs"));
 
         r = Integer.parseInt(savedInstanceState.getString("Riktigtekst")); // For å beholde antall riktige ved opprettelse av skjermbildet
 
@@ -314,6 +307,4 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
         String landkode = getSharedPreferences("PREFERENCE",MODE_PRIVATE).getString("Landkode","");
         settland(landkode);
     }
-
-
 }

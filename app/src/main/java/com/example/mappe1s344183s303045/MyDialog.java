@@ -13,8 +13,8 @@ public class MyDialog extends DialogFragment {
     private DialogClickListener callback;
 
     public interface DialogClickListener {
-        public void onYesClick();
-        public void onNoClick();
+        void onYesClick();
+        void onNoClick();
 
         void visDialog(View v);
     }

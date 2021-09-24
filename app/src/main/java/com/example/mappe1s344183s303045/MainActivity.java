@@ -10,12 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.muddzdev.styleabletoastlibrary.StyleableToast;
-
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    int l = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
 
         String landkode = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("Landkode", "");
         settland(landkode);
-        System.out.println("Språk satt " + landkode);
 
         setContentView(R.layout.activity_main);
 
@@ -34,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         Button tredjeknapp = (Button) findViewById(R.id.statistikkknapp);
         tredjeknapp.setOnClickListener(this::onClick);
         //Lager clicklisteners slik at trykkene registreres
+
 
 
     }
@@ -67,15 +64,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    protected void onPause() {
-        super.onPause();
+    protected void onResume() {
+        super.onResume();
         String landkode = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("Landkode", "");
         settland(landkode);
-        System.out.println("Språk satt " + landkode);
-
 
     }
-
-
-
 }
