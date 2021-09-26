@@ -13,7 +13,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="12dp"
-        android:layout_marginRight="460dp"
+        android:layout_marginEnd="460dp"
         android:background="@color/dusgrønn"
         android:onClick="tilMeny"
         android:text="X"
@@ -87,8 +87,8 @@
 
     <Button
         android:id="@+id/slettstat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="185dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="40dp"
         android:text="@string/slettstat"
         android:background="@color/dusgrønn"
