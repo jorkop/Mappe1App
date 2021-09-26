@@ -39,14 +39,17 @@ public class MainActivity extends AppCompatActivity {
         if (v.getId() == R.id.startknapp) {
             Intent intent = new Intent(this, Start.class);
             startActivity(intent);
+            finish();
         }
         else if (v.getId() == R.id.preferanseknapp) {
             Intent intent = new Intent(this, Preferanser.class);
             startActivity(intent);
+            finish();
         }
         else if (v.getId() == R.id.statistikkknapp) {
             Intent intent = new Intent(this, Statistikk.class);
             startActivity(intent);
+            finish();
         }
         else {
             Toast.makeText(getApplicationContext(), "Du ble ikke sendt til en side", Toast.LENGTH_SHORT).show();
@@ -64,10 +67,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    protected void onResume() {
-        super.onResume();
-        String landkode = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getString("Landkode", "");
-        settland(landkode);
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode, Intent data) {
+        super.onActivityResult(requestCode,resultCode,data);
 
+        if (requestCode==555) {
+            if (resultCode == RESULT_OK) {
+                recreate();
+            }
+        }
     }
 }

@@ -1,10 +1,12 @@
 package com.example.mappe1s344183s303045;
 
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
@@ -28,10 +30,7 @@ public class Preferanser extends AppCompatActivity implements View.OnClickListen
         Button knapp3 = (Button) findViewById(R.id.spm15);
         knapp3.setOnClickListener(this);
 
-        if (!landkode.equals("no")) {
-            settland(landkode);
-            System.out.println("onCreate land: " + landkode);
-        }
+
     }
 
     public void settland(String landskode) {
@@ -52,14 +51,12 @@ public class Preferanser extends AppCompatActivity implements View.OnClickListen
         landkode  = "de";
         settland(landkode);
         recreate();
-        System.out.println("tysk: " + landkode);
     }
 
     public void norsk(View v) {
         landkode  = "no";
         settland(landkode);
         recreate();
-        System.out.println("nb: " + landkode);
     }
 
 
@@ -97,6 +94,15 @@ public class Preferanser extends AppCompatActivity implements View.OnClickListen
     }
 
     public void tilMenyen(View v) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivityForResult(intent, 555);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivityForResult(intent, 555);
         finish();
     }
 }

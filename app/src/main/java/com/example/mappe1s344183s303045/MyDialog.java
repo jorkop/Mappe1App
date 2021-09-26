@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 public class MyDialog extends DialogFragment {
@@ -26,11 +27,12 @@ public class MyDialog extends DialogFragment {
             callback=(DialogClickListener)getActivity();
         }
         catch (ClassCastException e){
-            throw new ClassCastException("Kallende klasse må implementere interfacet!");
+            throw new ClassCastException("Klassen må implementere interfacet!");
         }
     }
 
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         return new AlertDialog.Builder(getActivity()).setTitle(R.string.avslutt).setPositiveButton(R.string.ok,

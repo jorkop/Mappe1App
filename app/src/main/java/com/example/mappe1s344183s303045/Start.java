@@ -1,5 +1,6 @@
 package com.example.mappe1s344183s303045;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -27,11 +28,19 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
     //Yes og No er for popup ved avbrutt spill
     @Override
     public void onYesClick() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivityForResult(intent, 555);
         finish();
     }
     @Override
     public void onNoClick() {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        DialogFragment dialog = new MyDialog();
+        dialog.show(getSupportFragmentManager(),"Avslutt");
     }
 
     @Override
@@ -155,14 +164,14 @@ public class Start extends AppCompatActivity implements View.OnClickListener, My
                     toast.show();
                     toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
                     r++;
-                        riktig.setText(Integer.toString(r));
+                        riktig.setText(String.format(Locale.getDefault(), "%d",r));
 
                 } else {
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.feilsvar, Toast.LENGTH_SHORT);
                     toast.show();
                     toast.setGravity(Gravity.CENTER_HORIZONTAL,0,0);
                     f++;
-                    feil.setText(Integer.toString(f));
+                    feil.setText(String.format(Locale.getDefault(), "%d",f));
 
                 }
 
